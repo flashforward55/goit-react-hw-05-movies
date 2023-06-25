@@ -11,7 +11,7 @@ const Reviews = lazy(() => import('components/Reviews/Reviews.jsx'));
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/goit-react-hw-05-movies">
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,11 +1,17 @@
-// Reviews.jsx
 import React from 'react';
 
-const Reviews = () => {
+const Reviews = ({ reviews }) => {
   return (
     <div>
-      <h1>Reviews</h1>
-      {/* Добавь здесь контент для страницы обзоров */}
+      <h2>Reviews</h2>
+      <ul>
+        {reviews.map(review => (
+          <li key={review.id}>
+            <p>{review.author}</p>
+            <p>{review.content}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
