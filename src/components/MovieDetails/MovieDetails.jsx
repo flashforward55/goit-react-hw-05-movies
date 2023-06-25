@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
+  const navigate = useNavigate();
   const [movieDetails, setMovieDetails] = useState(null);
   const [cast, setCast] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -89,8 +90,13 @@ const MovieDetails = () => {
     setShowCast(false);
   };
 
+  const goBack = () => {
+    navigate('/');
+  };
+
   return (
     <div>
+      <button onClick={goBack}>Go Back</button>
       <h2>{title}</h2>
       <div>
         {poster_path && (
@@ -120,7 +126,15 @@ const MovieDetails = () => {
         </ul>
       </div>
       {showCast && <Cast cast={cast} />}
-      {showReviews && <Reviews reviews={reviews} />}
+      {showReviews && (
+        <>
+          {reviews.length === 0 ? (
+            <p>We don't have any reviews for this movie.</p>
+          ) : (
+            <Reviews reviews={reviews} />
+          )}
+        </>
+      )}
     </div>
   );
 };
