@@ -9,17 +9,14 @@ const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/goit-react-hw-05-movies">
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          {/*           <Switch> */}
-          <Route exact path="/" component={Home} />
-          <Route exact path="/movies" component={Movies} />
-          <Route exact path="/movies/:movieId" component={MovieDetails} />
-          <Route exact path="/movies/:movieId/cast" component={Cast} />
-          <Route exact path="/movies/:movieId/reviews" component={Reviews} />
-          {/*  <Redirect to="/" /> */}
-          {/* </Switch> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/movies/:movieId/cast" element={<Cast />} />
+          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
         </Routes>
       </Suspense>
     </Router>
