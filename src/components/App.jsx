@@ -2,14 +2,16 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import('components/Home/Home'));
-const Movies = lazy(() => import('components/Movies/Movies'));
-const MovieDetails = lazy(() => import('components/MovieDetails/MovieDetails'));
-const Cast = lazy(() => import('components/Cast/Cast'));
-const Reviews = lazy(() => import('components/Reviews/Reviews'));
+const Movies = lazy(() => import('components/Movies/Movies.jsx'));
+const MovieDetails = lazy(() =>
+  import('components/MovieDetails/MovieDetails.jsx')
+);
+const Cast = lazy(() => import('components/Cast/Cast.jsx'));
+const Reviews = lazy(() => import('components/Reviews/Reviews.jsx'));
 
 const App = () => {
   return (
-    <Router basename="/goit-react-hw-05-movies">
+    <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
