@@ -86,7 +86,7 @@ const MovieDetails = () => {
   }
 
   const { poster_path, title, vote_average, overview, genres } = movieDetails;
-  const userScore = vote_average * 10;
+  const userScore = (vote_average * 10).toFixed(2);
 
   const toggleCast = () => {
     setShowCast(!showCast);
