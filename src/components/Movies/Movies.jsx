@@ -22,6 +22,12 @@ const Movies = () => {
     }
   };
 
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
       <h1>Search Movies</h1>
@@ -29,6 +35,7 @@ const Movies = () => {
         type="text"
         value={searchQuery}
         onChange={e => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown} // Add onKeyDown event handler
       />
       <button onClick={handleSearch}>Search</button>
 
