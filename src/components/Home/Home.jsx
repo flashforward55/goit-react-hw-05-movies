@@ -15,7 +15,6 @@ const Title = styled.h1`
 `;
 
 const MovieList = styled.ul`
-  list-style: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
