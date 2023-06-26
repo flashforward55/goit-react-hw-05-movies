@@ -8,7 +8,7 @@ const Movies = () => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        'https://api.themoviedb.org/3/search/search-movies',
+        'https://api.themoviedb.org/3/search/movie',
         {
           params: {
             api_key: '6d44761072bd3455ede44a6813ca8a9a',

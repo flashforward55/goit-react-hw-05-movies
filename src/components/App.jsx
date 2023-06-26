@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const Home = lazy(() => import('components/Home/Home'));
 const Movies = lazy(() => import('components/Movies/Movies.jsx'));
@@ -12,6 +12,10 @@ const Reviews = lazy(() => import('components/Reviews/Reviews.jsx'));
 const App = () => {
   return (
     <Router basename="/goit-react-hw-05-movies">
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/movies">Movies</Link>
+      </nav>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
