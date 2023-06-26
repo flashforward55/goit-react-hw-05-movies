@@ -24,23 +24,24 @@ const Navigation = styled.nav`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-
-  & > * {
-    margin-right: 10px;
-  }
 `;
 
-const Link = styled(NavLink)`
+const NavItem = styled(NavLink)`
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    text-decoration: underline;
+    background-color: #f2f2f2;
   }
 
   &.active {
-    color: #ff4500;
+    background-color: #ff6347;
+    color: #fff;
   }
 `;
 
@@ -49,8 +50,8 @@ const App = () => {
     <Router basename="/goit-react-hw-05-movies">
       <AppContainer>
         <Navigation>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/movies">Movies</NavItem>
         </Navigation>
         <Suspense fallback={<Loader />}>
           <Routes>
