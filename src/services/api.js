@@ -38,6 +38,6 @@ export const fetchTrendingMovies = async () => {
     return response.data.results;
   } catch (error) {
     console.log('Error fetching trending movies:', error);
-    throw error; // Optional: Re-throw the error to handle it in the caller function
+    throw error;
   }
 };
