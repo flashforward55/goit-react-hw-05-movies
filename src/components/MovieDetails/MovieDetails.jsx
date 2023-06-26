@@ -1,10 +1,66 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import Loader from '../Loader/Loader';
 import { fetchMovieDetails, fetchCast, fetchReviews } from 'services/api';
+import styled from 'styled-components';
+
+const MovieDetailsContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+`;
+
+const UpperSection = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
+const PosterSection = styled.div`
+  flex: 0 0 30%;
+`;
+
+const PosterImage = styled.img`
+  width: 100%;
+`;
+
+const DetailsSection = styled.div`
+  flex: 1;
+  padding: 0 20px;
+`;
+
+const GoBackButton = styled.button`
+  margin-bottom: 20px;
+`;
+
+const MovieTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 10px;
+`;
+
+const UserScore = styled.p`
+  font-weight: bold;
+`;
+
+const Overview = styled.p`
+  margin-top: 10px;
+`;
+
+const Genres = styled.p`
+  margin-top: 10px;
+`;
+
+const LowerSection = styled.div`
+  margin-top: 40px;
+`;
+
+const AdditionalInfo = styled.div`
+  margin-bottom: 20px;
+`;
+
+const InfoButton = styled.button`
+  margin-right: 10px;
+`;
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -39,46 +95,6 @@ const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
-  useEffect(() => {
-    const fetchCast = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits`,
-          {
-            params: {
-              api_key: '6d44761072bd3455ede44a6813ca8a9a',
-            },
-          }
-        );
-        setCast(response.data.cast);
-      } catch (error) {
-        console.log('Error fetching cast:', error);
-      }
-    };
-
-    fetchCast();
-  }, [movieId]);
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
-          {
-            params: {
-              api_key: '6d44761072bd3455ede44a6813ca8a9a',
-            },
-          }
-        );
-        setReviews(response.data.results);
-      } catch (error) {
-        console.log('Error fetching reviews:', error);
-      }
-    };
-
-    fetchReviews();
-  }, [movieId]);
-
   if (isLoading) {
     return <Loader />;
   }
@@ -108,49 +124,55 @@ const MovieDetails = () => {
   const releaseYear = release_date ? release_date.split('-')[0] : '';
 
   return (
-    <div>
-      <button onClick={goBack}>Go Back</button>
-      <h2>
-        {title} ({releaseYear})
-      </h2>
-      <div>
-        {poster_path && (
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={title}
-          />
-        )}
-      </div>
-      <p>User Score: {userScore}%</p>
-      <p>Overview: {overview}</p>
-      <p>
-        Genres:{' '}
-        {genres.map(genre => (
-          <span key={genre.id}>{genre.name} </span>
-        ))}
-      </p>
-      <div>
-        <h2>Additional Information</h2>
-        <ul>
-          <li>
-            <button onClick={toggleCast}>Cast</button>
-          </li>
-          <li>
-            <button onClick={toggleReviews}>Reviews</button>
-          </li>
-        </ul>
-      </div>
-      {showCast && <Cast cast={cast} />}
-      {showReviews && (
-        <>
-          {reviews.length === 0 ? (
-            <p>We don't have any reviews for this movie.</p>
-          ) : (
-            <Reviews reviews={reviews} />
+    <MovieDetailsContainer>
+      <UpperSection>
+        <PosterSection>
+          {poster_path && (
+            <PosterImage
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt={title}
+            />
           )}
-        </>
-      )}
-    </div>
+        </PosterSection>
+        <DetailsSection>
+          <GoBackButton onClick={goBack}>Go Back</GoBackButton>
+          <MovieTitle>
+            {title} ({releaseYear})
+          </MovieTitle>
+          <UserScore>User Score: {userScore}%</UserScore>
+          <Overview>Overview: {overview}</Overview>
+          <Genres>
+            Genres:{' '}
+            {genres.map(genre => (
+              <span key={genre.id}>{genre.name} </span>
+            ))}
+          </Genres>
+        </DetailsSection>
+      </UpperSection>
+      <LowerSection>
+        <AdditionalInfo>
+          <h2>Additional Information</h2>
+          <ul>
+            <li>
+              <InfoButton onClick={toggleCast}>Cast</InfoButton>
+            </li>
+            <li>
+              <InfoButton onClick={toggleReviews}>Reviews</InfoButton>
+            </li>
+          </ul>
+        </AdditionalInfo>
+        {showCast && <Cast cast={cast} />}
+        {showReviews && (
+          <>
+            {reviews.length === 0 ? (
+              <p>We don't have any reviews for this movie.</p>
+            ) : (
+              <Reviews reviews={reviews} />
+            )}
+          </>
+        )}
+      </LowerSection>
+    </MovieDetailsContainer>
   );
 };
 

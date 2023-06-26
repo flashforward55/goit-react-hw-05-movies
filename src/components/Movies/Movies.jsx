@@ -7,9 +7,12 @@ import { searchMovies } from 'services/api';
 const MoviesContainer = styled.div`
   background-color: #f9f9f9;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   color: #333;
   margin-bottom: 20px;
 `;
