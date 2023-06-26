@@ -49,6 +49,17 @@ const MovieImage = styled.img`
   width: 100%;
   height: auto;
   margin-bottom: 10px;
+  transition: transform 0.35s ease-in-out;
+
+  &:hover {
+    animation: pulsare 2s ease-in-out;
+    transform: scale(1.03);
+  }
+  @keyframes pulsare {
+    0% {
+      box-shadow: 0 0 25px #5ddcff, 0 0 50px #4e00c2;
+    }
+  }
 `;
 
 const MovieTitle = styled.p`
