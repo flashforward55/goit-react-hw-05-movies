@@ -60,6 +60,9 @@ const Overview = styled.p`
 
 const Genres = styled.p`
   margin-top: 10px;
+  span:not(:last-child)::after {
+    content: '| ';
+  }
 `;
 
 const LowerSection = styled.div`
