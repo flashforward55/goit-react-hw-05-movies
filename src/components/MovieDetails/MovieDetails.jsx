@@ -6,14 +6,13 @@ import Loader from '../Loader/Loader';
 import { fetchMovieDetails, fetchCast, fetchReviews } from 'services/api';
 import styled from 'styled-components';
 
-const MovieDetailsContainer = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-`;
+const MovieDetailsContainer = styled.div``;
 
 const UpperSection = styled.div`
   display: flex;
   align-items: flex-start;
+  max-width: 900px;
+  margin: 0 auto;
 `;
 
 const PosterSection = styled.div`
