@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Loader from 'components/Loader/Loader';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
   const handleSearch = async () => {
     try {
+      setIsLoading(true); // Set isLoading to true while fetching results
+
       const response = await axios.get(
         'https://api.themoviedb.org/3/search/movie',
         {
@@ -16,9 +20,12 @@ const Movies = () => {
           },
         }
       );
+
       setSearchResults(response.data.results);
     } catch (error) {
       console.log('Error searching movies:', error);
+    } finally {
+      setIsLoading(false); // Set isLoading to false after fetching results
     }
   };
 
@@ -35,15 +42,19 @@ const Movies = () => {
         type="text"
         value={searchQuery}
         onChange={e => setSearchQuery(e.target.value)}
-        onKeyDown={handleKeyDown} // Add onKeyDown event handler
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleSearch}>Search</button>
 
-      <ul>
-        {searchResults.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
+      {isLoading ? ( // Render Loader component when isLoading is true
+        <Loader />
+      ) : (
+        <ul>
+          {searchResults.map(movie => (
+            <li key={movie.id}>{movie.title}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
