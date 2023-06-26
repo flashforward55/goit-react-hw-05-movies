@@ -49,11 +49,11 @@ const MovieImage = styled.img`
   width: 100%;
   height: auto;
   margin-bottom: 10px;
-  transition: transform 0.35s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 
   &:hover {
-    animation: pulsare 2s ease-in-out;
-    transform: scale(1.03);
+    animation: pulsare 1s ease-in-out;
+    transform: scale(1.01);
   }
   @keyframes pulsare {
     0% {
