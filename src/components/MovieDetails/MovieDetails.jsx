@@ -85,7 +85,8 @@ const MovieDetails = () => {
     return <div>Unable to fetch movie details.</div>;
   }
 
-  const { poster_path, title, vote_average, overview, genres } = movieDetails;
+  const { poster_path, title, vote_average, overview, genres, release_date } =
+    movieDetails;
   const userScore = (vote_average * 10).toFixed(2);
 
   const toggleCast = () => {
@@ -102,10 +103,14 @@ const MovieDetails = () => {
     navigate('/');
   };
 
+  const releaseYear = release_date ? release_date.split('-')[0] : '';
+
   return (
     <div>
       <button onClick={goBack}>Go Back</button>
-      <h2>{title}</h2>
+      <h2>
+        {title} ({releaseYear})
+      </h2>
       <div>
         {poster_path && (
           <img
