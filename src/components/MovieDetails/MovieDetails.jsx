@@ -29,7 +29,20 @@ const DetailsSection = styled.div`
 `;
 
 const GoBackButton = styled.button`
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ccc;
+    color: #fff;
+  }
 `;
 
 const MovieTitle = styled.h2`
