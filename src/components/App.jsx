@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Loader from './Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 const Home = lazy(() => import('components/Home/Home'));
 const Movies = lazy(() => import('components/Movies/Movies.jsx'));

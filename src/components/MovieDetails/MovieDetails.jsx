@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
+import Loader from '../Loader/Loader';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -12,6 +13,7 @@ const MovieDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [showCast, setShowCast] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -27,6 +29,8 @@ const MovieDetails = () => {
         setMovieDetails(response.data);
       } catch (error) {
         console.log('Error fetching movie details:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -73,8 +77,12 @@ const MovieDetails = () => {
     fetchReviews();
   }, [movieId]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   if (!movieDetails) {
-    return <div>Loading...</div>;
+    return <div>Unable to fetch movie details.</div>;
   }
 
   const { poster_path, title, vote_average, overview, genres } = movieDetails;
