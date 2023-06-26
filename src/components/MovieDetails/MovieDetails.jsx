@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import Loader from '../Loader/Loader';
+import { fetchMovieDetails, fetchCast, fetchReviews } from 'services/api';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -16,17 +17,18 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}`,
-          {
-            params: {
-              api_key: '6d44761072bd3455ede44a6813ca8a9a',
-            },
-          }
-        );
-        setMovieDetails(response.data);
+        setIsLoading(true);
+
+        const movieDetailsData = await fetchMovieDetails(movieId);
+        setMovieDetails(movieDetailsData);
+
+        const castData = await fetchCast(movieId);
+        setCast(castData);
+
+        const reviewsData = await fetchReviews(movieId);
+        setReviews(reviewsData);
       } catch (error) {
         console.log('Error fetching movie details:', error);
       } finally {
@@ -34,7 +36,7 @@ const MovieDetails = () => {
       }
     };
 
-    fetchMovieDetails();
+    fetchData();
   }, [movieId]);
 
   useEffect(() => {
