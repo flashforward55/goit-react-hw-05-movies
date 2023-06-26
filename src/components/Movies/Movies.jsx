@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Loader from 'components/Loader/Loader';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-//import placeholderPoster from 'services/No-Image.svg';
+import { searchMovies } from 'services/api';
 
 const MoviesContainer = styled.div`
   background-color: #f9f9f9;
@@ -80,17 +78,9 @@ const Movies = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.get(
-        'https://api.themoviedb.org/3/search/movie',
-        {
-          params: {
-            api_key: '6d44761072bd3455ede44a6813ca8a9a',
-            query: searchQuery,
-          },
-        }
-      );
+      const results = await searchMovies(searchQuery);
 
-      setSearchResults(response.data.results);
+      setSearchResults(results);
     } catch (error) {
       console.log('Error searching movies:', error);
     } finally {

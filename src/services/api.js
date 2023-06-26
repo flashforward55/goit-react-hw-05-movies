@@ -41,3 +41,34 @@ export const fetchTrendingMovies = async () => {
     throw error;
   }
 };
+
+export const searchMovies = async (query) => {
+  const path = '/search/movie';
+
+  try {
+    const response = await axios.get(`${path}?${searchParams}&query=${query}`);
+    return response.data.results;
+  } catch (error) {
+    console.log('Error searching movies:', error);
+    throw error;
+  }
+};
+
+
+
+/* export const searchMovies = async (query) => {
+  try {
+    const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
+      params: {
+        api_key: API_KEY,
+        query: query,
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    console.log('Error searching movies:', error);
+    throw error;
+  }
+};
+ */
