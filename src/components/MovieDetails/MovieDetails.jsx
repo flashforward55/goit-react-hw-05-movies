@@ -53,12 +53,30 @@ const LowerSection = styled.div`
   margin-top: 40px;
 `;
 
+const ButtonMovieDetails = styled.ul`
+  display: flex;
+  justify-content: center;
+`;
+
 const AdditionalInfo = styled.div`
-  margin-bottom: 20px;
+  text-align: center;
 `;
 
 const InfoButton = styled.button`
-  margin-right: 10px;
+  margin: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
 
 const MovieDetails = () => {
@@ -150,15 +168,17 @@ const MovieDetails = () => {
       </UpperSection>
       <LowerSection>
         <AdditionalInfo>
-          <h2>Additional Information</h2>
-          <ul>
-            <li>
-              <InfoButton onClick={toggleCast}>Cast</InfoButton>
-            </li>
-            <li>
-              <InfoButton onClick={toggleReviews}>Reviews</InfoButton>
-            </li>
-          </ul>
+          <AdditionalInfo>
+            <h2>Additional Information</h2>
+            <ButtonMovieDetails>
+              <li>
+                <InfoButton onClick={toggleCast}>Cast</InfoButton>
+              </li>
+              <li>
+                <InfoButton onClick={toggleReviews}>Reviews</InfoButton>
+              </li>
+            </ButtonMovieDetails>
+          </AdditionalInfo>
         </AdditionalInfo>
         {showCast && <Cast cast={cast} />}
         {showReviews && (
