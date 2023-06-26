@@ -1,5 +1,10 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+} from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import styled from 'styled-components';
 
@@ -25,13 +30,17 @@ const Navigation = styled.nav`
   }
 `;
 
-const StyledLink = styled(Link)`
+const Link = styled(NavLink)`
   text-decoration: none;
   color: #333;
   font-weight: bold;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &.active {
+    color: #ff4500;
   }
 `;
 
@@ -40,8 +49,8 @@ const App = () => {
     <Router basename="/goit-react-hw-05-movies">
       <AppContainer>
         <Navigation>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/movies">Movies</StyledLink>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
         </Navigation>
         <Suspense fallback={<Loader />}>
           <Routes>
