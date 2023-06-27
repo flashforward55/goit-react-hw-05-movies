@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Loader from 'components/Loader/Loader';
 import PropTypes from 'prop-types';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { searchMovies } from 'services/api';
 import {
   MoviesContainer,
   Title,
@@ -14,27 +16,30 @@ import {
   PlaceholderPoster,
   ErrorMessage,
 } from './Movies.styled';
-import { searchMovies } from 'services/api';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  const handleSearch = async () => {
+  useEffect(() => {
+    const query = searchParams.get('query') || '';
+    setSearchQuery(query);
+
+    if (query) {
+      performSearch(query);
+    }
+  }, [searchParams]);
+
+  const performSearch = async query => {
     try {
       setIsLoading(true);
       setErrorMessage('');
 
-      if (searchQuery.trim() === '') {
-        setErrorMessage('Please enter a search query');
-        setSearchResults([]);
-        setIsLoading(false);
-        return;
-      }
-
-      const results = await searchMovies(searchQuery);
+      const results = await searchMovies(query);
 
       if (results.length === 0) {
         setErrorMessage('No movies found');
@@ -50,6 +55,11 @@ const Movies = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSearch = () => {
+    navigate(`?query=${encodeURIComponent(searchQuery)}`);
+    performSearch(searchQuery);
   };
 
   const handleKeyDown = e => {
