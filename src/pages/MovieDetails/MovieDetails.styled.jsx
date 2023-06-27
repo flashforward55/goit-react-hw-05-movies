@@ -6,7 +6,7 @@ export const UpperSection = styled.div`
   display: flex;
   align-items: flex-start;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 65px auto 0;
 `;
 
 export const PosterSection = styled.div`
