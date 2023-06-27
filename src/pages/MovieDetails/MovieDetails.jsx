@@ -80,7 +80,7 @@ const MovieDetails = () => {
   };
 
   const goBack = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   const releaseYear = release_date ? release_date.split('-')[0] : '';
