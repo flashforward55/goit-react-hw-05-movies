@@ -7,9 +7,13 @@ import {
   PlaceholderImage,
   ActorName,
   CharacterName,
+  NoActors,
 } from './Cast.styled';
 
 const Cast = ({ cast }) => {
+  if (cast.length === 0) {
+    return <NoActors>The actors of this movie are not represented</NoActors>;
+  }
   return (
     <CastContainer>
       {cast.map(actor => (
