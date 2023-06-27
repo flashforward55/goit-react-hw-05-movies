@@ -94,3 +94,7 @@ export const InfoButton = styled.button`
     background-color: #0056b3;
   }
 `;
+
+export const TiteInfo = styled.h2`
+  color: #b92121;
+`;

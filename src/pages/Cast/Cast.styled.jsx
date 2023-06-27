@@ -51,7 +51,3 @@ export const CharacterName = styled.p`
   margin-top: 5px;
 `;
 
-export const NoActors = styled.p`
-  color: red;
-  text-align: center;
-`;

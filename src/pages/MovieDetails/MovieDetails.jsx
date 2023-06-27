@@ -21,6 +21,7 @@ import {
   ButtonMovieDetails,
   AdditionalInfo,
   InfoButton,
+  TiteInfo,
 } from './MovieDetails.styled';
 import PropTypes from 'prop-types';
 
@@ -119,18 +120,16 @@ const MovieDetails = () => {
       </UpperSection>
       <LowerSection>
         <AdditionalInfo>
-          <AdditionalInfo>
-            <h2>Additional Information</h2>
-            <ButtonMovieDetails>
-              <li>
-                <InfoButton onClick={toggleCast}>Cast</InfoButton>
-              </li>
-              <li>
-                <InfoButton onClick={toggleReviews}>Reviews</InfoButton>
-              </li>
-            </ButtonMovieDetails>
-            <Outlet />
-          </AdditionalInfo>
+          <TiteInfo>Additional Information</TiteInfo>
+          <ButtonMovieDetails>
+            <li>
+              <InfoButton onClick={toggleCast}>Cast</InfoButton>
+            </li>
+            <li>
+              <InfoButton onClick={toggleReviews}>Reviews</InfoButton>
+            </li>
+          </ButtonMovieDetails>
+          <Outlet />
         </AdditionalInfo>
         {showCast && <Cast cast={cast} />}
         {showReviews && (
