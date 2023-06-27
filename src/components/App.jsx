@@ -3,11 +3,11 @@ import { Route, Routes, NavLink } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import styled from 'styled-components';
 
-const Home = lazy(() => import('page/Home/Home'));
-const Movies = lazy(() => import('page/Movies/Movies.jsx'));
-const MovieDetails = lazy(() => import('page/MovieDetails/MovieDetails.jsx'));
-const Cast = lazy(() => import('page/Cast/Cast.jsx'));
-const Reviews = lazy(() => import('page/Reviews/Reviews.jsx'));
+const Home = lazy(() => import('pages/Home/Home'));
+const Movies = lazy(() => import('pages/Movies/Movies.jsx'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails.jsx'));
+const Cast = lazy(() => import('pages/Cast/Cast.jsx'));
+const Reviews = lazy(() => import('pages/Reviews/Reviews.jsx'));
 
 const AppContainer = styled.div`
   padding: 20px;
