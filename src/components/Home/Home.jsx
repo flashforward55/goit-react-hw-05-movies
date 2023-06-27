@@ -52,7 +52,7 @@ const MovieImage = styled.img`
   transition: transform 0.1s ease-in-out;
 
   &:hover {
-    animation: pulsare 1s ease-in-out;
+    animation: pulsare 2.5s ease-in-out;
     transform: scale(1.01);
   }
   @keyframes pulsare {
