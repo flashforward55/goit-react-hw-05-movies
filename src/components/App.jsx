@@ -1,42 +1,13 @@
-import React, { lazy, Suspense } from 'react';
-import { Route, Routes, NavLink } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
-import styled from 'styled-components';
+import { AppContainer, Navigation, NavItem } from './App.styled';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies.jsx'));
 const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails.jsx'));
 const Cast = lazy(() => import('pages/Cast/Cast.jsx'));
 const Reviews = lazy(() => import('pages/Reviews/Reviews.jsx'));
-
-const AppContainer = styled.div`
-  padding: 20px;
-`;
-
-const Navigation = styled.nav`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-
-const NavItem = styled(NavLink)`
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  margin-right: 10px;
-  padding: 5px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #f2f2f2;
-  }
-
-  &.active {
-    background-color: #ff6347;
-    color: #fff;
-  }
-`;
 
 const App = () => {
   return (

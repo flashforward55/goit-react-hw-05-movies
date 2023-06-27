@@ -4,103 +4,25 @@ import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import Loader from '../../components/Loader/Loader';
 import { fetchMovieDetails, fetchCast, fetchReviews } from 'services/api';
-import styled from 'styled-components';
+import {
+  MovieDetailsContainer,
+  UpperSection,
+  PosterSection,
+  PosterImage,
+  DetailsSection,
+  GoBackButton,
+  MovieTitle,
+  UserScore,
+  Bold,
+  SpanBold,
+  Overview,
+  Genres,
+  LowerSection,
+  ButtonMovieDetails,
+  AdditionalInfo,
+  InfoButton,
+} from './MovieDetails.styled';
 import PropTypes from 'prop-types';
-
-const MovieDetailsContainer = styled.div``;
-
-const UpperSection = styled.div`
-  display: flex;
-  align-items: flex-start;
-  max-width: 900px;
-  margin: 0 auto;
-`;
-
-const PosterSection = styled.div`
-  flex: 0 0 30%;
-`;
-
-const PosterImage = styled.img`
-  width: 100%;
-`;
-
-const DetailsSection = styled.div`
-  flex: 1;
-  padding: 0 20px;
-`;
-
-const GoBackButton = styled.button`
-  padding: 10px 20px;
-  background-color: #f5f5f5;
-  color: #333;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #ccc;
-    color: #fff;
-  }
-`;
-
-const MovieTitle = styled.h2`
-  font-size: 24px;
-  margin-bottom: 10px;
-`;
-
-const UserScore = styled.p``;
-
-const Bold = styled.p`
-  font-weight: bold;
-`;
-
-const SpanBold = styled.span`
-  font-weight: bold;
-`;
-
-const Overview = styled.p`
-  margin-top: 10px;
-`;
-
-const Genres = styled.p`
-  margin-top: 10px;
-  span:not(:last-child)::after {
-    content: ' | ';
-  }
-`;
-
-const LowerSection = styled.div`
-  margin-top: 40px;
-`;
-
-const ButtonMovieDetails = styled.ul`
-  display: flex;
-  justify-content: center;
-`;
-
-const AdditionalInfo = styled.div`
-  text-align: center;
-`;
-
-const InfoButton = styled.button`
-  margin: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
 
 const MovieDetails = () => {
   const { movieId } = useParams();

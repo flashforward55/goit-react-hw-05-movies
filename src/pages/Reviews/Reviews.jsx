@@ -1,22 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const ReviewContainer = styled.div`
-  margin-top: 20px;
-`;
-
-const ReviewItem = styled.li`
-  margin-bottom: 20px;
-`;
-
-const Author = styled.p`
-  font-weight: bold;
-`;
-
-const Content = styled.p`
-  margin-top: 5px;
-`;
+import { ReviewContainer, ReviewItem, Author, Content } from './Reviews.styled';
 
 const Reviews = ({ reviews }) => {
   return (
