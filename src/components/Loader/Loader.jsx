@@ -13,7 +13,6 @@ const Loader = ({
 }) => (
   <LoaderWrapper>
     <Oval
-      type={type}
       color={color}
       secondaryColor={secondaryColor}
       height={height}
@@ -25,7 +24,6 @@ const Loader = ({
 );
 
 Loader.propTypes = {
-  type: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   secondaryColor: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
@@ -35,7 +33,6 @@ Loader.propTypes = {
 };
 
 Loader.defaultProps = {
-  type: 'TailSpin',
   color: '#00BFFF',
   secondaryColor: '#00BFFF',
   height: '80',

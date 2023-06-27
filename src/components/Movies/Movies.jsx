@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Loader from 'components/Loader/Loader';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { searchMovies } from 'services/api';
@@ -132,6 +133,16 @@ const Movies = () => {
       )}
     </MoviesContainer>
   );
+};
+
+MovieList.propTypes = {
+  searchResults: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Movies;
