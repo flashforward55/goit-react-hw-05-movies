@@ -1,10 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  NavLink,
-} from 'react-router-dom';
+import { Route, Routes, NavLink } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import styled from 'styled-components';
 
@@ -47,7 +42,7 @@ const NavItem = styled(NavLink)`
 
 const App = () => {
   return (
-    <Router basename="/goit-react-hw-05-movies">
+    <>
       <AppContainer>
         <Navigation>
           <NavItem to="/">Home</NavItem>
@@ -63,7 +58,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </AppContainer>
-    </Router>
+    </>
   );
 };
 

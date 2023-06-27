@@ -5,6 +5,7 @@ import Reviews from '../Reviews/Reviews';
 import Loader from '../Loader/Loader';
 import { fetchMovieDetails, fetchCast, fetchReviews } from 'services/api';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const MovieDetailsContainer = styled.div``;
 
@@ -211,4 +212,15 @@ const MovieDetails = () => {
   );
 };
 
+MovieDetails.propTypes = {
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  vote_average: PropTypes.number,
+  overview: PropTypes.string,
+  genres: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+  release_date: PropTypes.string,
+};
 export default MovieDetails;

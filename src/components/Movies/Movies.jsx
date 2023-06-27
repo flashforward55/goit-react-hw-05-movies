@@ -142,7 +142,7 @@ MovieList.propTypes = {
       poster_path: PropTypes.string,
       title: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
 };
 
 export default Movies;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { LoaderWrapper } from './Loader.styled';
 
 const Loader = ({
-  type,
   color,
   height,
   width,
