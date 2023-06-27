@@ -72,20 +72,41 @@ const PlaceholderPoster = styled.div`
   background-position: center;
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+`;
+
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSearch = async () => {
     try {
       setIsLoading(true);
+      setErrorMessage('');
+
+      if (searchQuery.trim() === '') {
+        setErrorMessage('Please enter a search query');
+        setSearchResults([]);
+        setIsLoading(false);
+        return;
+      }
 
       const results = await searchMovies(searchQuery);
+
+      if (results.length === 0) {
+        setErrorMessage('No movies found');
+        setSearchResults([]);
+        setIsLoading(false);
+        return;
+      }
 
       setSearchResults(results);
     } catch (error) {
       console.log('Error searching movies:', error);
+      setErrorMessage('An error occurred while searching movies.');
     } finally {
       setIsLoading(false);
     }
@@ -109,6 +130,8 @@ const Movies = () => {
         />
         <SearchButton onClick={handleSearch}>Search</SearchButton>
       </SearchContainer>
+
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
       {isLoading ? (
         <Loader />
