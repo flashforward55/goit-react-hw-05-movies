@@ -13,8 +13,8 @@ const MoviesContainer = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h2`
-  color: #333;
+const Title = styled.h1`
+  color: #b92121;
   margin-bottom: 20px;
 `;
 

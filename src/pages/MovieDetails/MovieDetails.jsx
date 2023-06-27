@@ -51,7 +51,13 @@ const MovieTitle = styled.h2`
   margin-bottom: 10px;
 `;
 
-const UserScore = styled.p`
+const UserScore = styled.p``;
+
+const Bold = styled.p`
+  font-weight: bold;
+`;
+
+const SpanBold = styled.span`
   font-weight: bold;
 `;
 
@@ -62,7 +68,7 @@ const Overview = styled.p`
 const Genres = styled.p`
   margin-top: 10px;
   span:not(:last-child)::after {
-    content: '| ';
+    content: ' | ';
   }
 `;
 
@@ -173,10 +179,16 @@ const MovieDetails = () => {
           <MovieTitle>
             {title} ({releaseYear})
           </MovieTitle>
-          <UserScore>User Score: {userScore}%</UserScore>
-          <Overview>Overview: {overview}</Overview>
+          <UserScore>
+            <SpanBold>User Score: </SpanBold>
+            {userScore}%
+          </UserScore>
+          <Overview>
+            <Bold>Overview </Bold>
+            {overview}
+          </Overview>
           <Genres>
-            Genres:{' '}
+            <Bold>Genres </Bold>{' '}
             {genres.map(genre => (
               <span key={genre.id}>{genre.name} </span>
             ))}

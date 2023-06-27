@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
+  color: #b92121;
   margin-bottom: 20px;
 `;
 
@@ -65,6 +65,7 @@ const MovieImage = styled.img`
 const MovieTitle = styled.p`
   font-size: 16px;
   margin: 0;
+  color: #b92121;
 `;
 
 const Home = () => {
