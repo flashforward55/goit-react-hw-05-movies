@@ -15,6 +15,7 @@ import {
   MoviePoster,
   PlaceholderPoster,
   ErrorMessage,
+  SearchButtonLabel,
 } from './Movies.styled';
 
 const Movies = () => {
@@ -78,7 +79,10 @@ const Movies = () => {
           onChange={e => setSearchQuery(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <SearchButton onClick={handleSearch}>Search</SearchButton>
+        <SearchButton type="submit" onClick={handleSearch}>
+          <SearchButtonLabel>Search</SearchButtonLabel>
+        </SearchButton>
+        {/* <SearchButton>Search</SearchButton> */}
       </SearchContainer>
 
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

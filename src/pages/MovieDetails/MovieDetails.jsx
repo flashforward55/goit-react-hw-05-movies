@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, Outlet } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import Loader from '../../components/Loader/Loader';
@@ -129,7 +129,6 @@ const MovieDetails = () => {
               <InfoButton onClick={toggleReviews}>Reviews</InfoButton>
             </li>
           </ButtonMovieDetails>
-          <Outlet />
         </AdditionalInfo>
         {showCast && <Cast cast={cast} />}
         {showReviews && (

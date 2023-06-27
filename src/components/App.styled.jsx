@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const AppContainer = styled.div`
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 `;
 
 export const Navigation = styled.nav`
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add the box shadow property */
 `;
 
 export const NavItem = styled(NavLink)`
