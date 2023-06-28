@@ -24,14 +24,13 @@ export const DetailsSection = styled.div`
 
 export const GoBackButton = styled.button`
   font-weight: 500;
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #f5f5f5;
   color: #333;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  //margin-bottom: 20px;
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -66,9 +65,7 @@ export const Genres = styled.div`
   }
 `;
 
-export const LowerSection = styled.div`
-  //margin-top: 40px;
-`;
+export const LowerSection = styled.div``;
 
 export const ButtonMovieDetails = styled.ul`
   display: flex;
