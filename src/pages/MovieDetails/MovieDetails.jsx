@@ -88,6 +88,7 @@ const MovieDetails = () => {
 
   return (
     <MovieDetailsContainer>
+      <GoBackButton onClick={goBack}>Go Back</GoBackButton>
       <UpperSection>
         <PosterSection>
           {poster_path && (
@@ -98,7 +99,6 @@ const MovieDetails = () => {
           )}
         </PosterSection>
         <DetailsSection>
-          <GoBackButton onClick={goBack}>Go Back</GoBackButton>
           <MovieTitle>
             {title} ({releaseYear})
           </MovieTitle>
