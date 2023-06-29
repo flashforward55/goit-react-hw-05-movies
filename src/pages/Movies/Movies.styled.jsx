@@ -22,6 +22,12 @@ export const SearchContainer = styled.div`
 export const SearchInput = styled.input`
   padding: 8px;
   font-size: 16px;
+  transition: transform 0.1s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border: 2px solid orange;
+  }
 `;
 
 export const SearchButtonLabel = styled.span`
