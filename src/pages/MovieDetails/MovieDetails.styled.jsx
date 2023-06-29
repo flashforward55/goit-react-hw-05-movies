@@ -32,6 +32,8 @@ export const GoBackButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
 
   &:hover {
     background-color: #ccc;

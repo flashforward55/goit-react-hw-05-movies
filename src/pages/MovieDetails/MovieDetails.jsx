@@ -3,7 +3,9 @@ import { useParams, useNavigate, Outlet } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import Loader from '../../components/Loader/Loader';
+import ArrowLeft from 'components/Arrow/Arrow';
 import { fetchMovieDetails, fetchCast, fetchReviews } from 'services/api';
+
 import {
   MovieDetailsContainer,
   UpperSection,
@@ -88,7 +90,10 @@ const MovieDetails = () => {
 
   return (
     <MovieDetailsContainer>
-      <GoBackButton onClick={goBack}>Go Back</GoBackButton>
+      <GoBackButton onClick={goBack}>
+        <ArrowLeft />
+        Go Back
+      </GoBackButton>
       <UpperSection>
         <PosterSection>
           {poster_path && (
